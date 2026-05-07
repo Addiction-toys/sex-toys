@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addiction | Premium Intimacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        .brand-font { font-family: 'Playfair Display', serif; }
+        
+        .hero-banner {
+            width: 100%; height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero-main.jpeg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .product-card { margin-bottom: 4rem; transition: 0.4s; cursor: pointer; }
+        .img-box { aspect-ratio: 3/4; background: #0a0a0a; border: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .hidden { display: none; }
+        .btn-outline { border: 1px solid white; padding: 12px 30px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; transition: 0.4s; cursor: pointer; display: inline-block; }
+        .btn-outline:hover { background: white; color: black; }
+        
+        .product-main-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid #1a1a1a; }
+
+        .input-field { background: #080808; border: 1px solid #1a1a1a; padding: 15px; font-size: 11px; color: white; width: 100%; outline: none; }
+        .nav-link { font-size: 11px; color: #555; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; display: block; margin-bottom: 15px; }
+        .nav-link:hover { color: #fff; padding-left: 5px; }
+    </style>
+</head>
+<body>
+
+    <header class="py-12 border-b border-white/5 text-center bg-black sticky top-0 z-50">
+        <h1 class="brand-font text-6xl italic tracking-tighter cursor-pointer" onclick="showHome()">Addiction</h1>
+        <p class="text-[9px] uppercase tracking-[0.8em] text-gray-500 mt-2">Premium Sex Toys & Wellness</p>
+    </header>
+
+    <div id="hero-wrap">
+        <section class="hero-banner"><h2 class="brand-font text-8xl italic text-white mix-blend-difference">Addiction</h2></section>
+    </div>
+
+    <div id="home-view">
+        <main class="max-w-7xl mx-auto px-8 py-24 grid lg:grid-cols-12 gap-20">
+            <aside class="lg:col-span-3">
+                <h3 class="brand-font text-2xl italic mb-10 text-gray-400">Our Collection</h3>
+                <nav id="sector-nav"></nav>
+            </aside>
+
+            <section class="lg:col-span-9">
+                <div class="flex justify-between items-center mb-12">
+                    <h3 class="brand-font text-4xl italic">New Arrivals</h3>
+                    <button onclick="openNewArrivals()" class="text-[10px] uppercase tracking-widest border-b border-white/20 pb-1">Check All New Arrivals →</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24" id="home-arrivals"></div>
+                
+                <h3 class="brand-font text-4xl italic mb-12 border-t border-white/5 pt-12">Trending Now</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16" id="home-trending"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- VIEWS -->
+    <div id="new-arrivals-view" class="hidden max-w-7xl mx-auto px-8 py-24"><h2 class="brand-font text-7xl italic mb-20">Full New Arrivals</h2><div id="new-arrivals-grid" class="grid grid-cols-2 md:grid-cols-4 gap-12"></div><button onclick="showHome()" class="mt-20 btn-outline">Back to Home</button></div>
+    <div id="category-view" class="hidden max-w-7xl mx-auto px-8 py-24"><h2 id="cat-title" class="brand-font text-7xl italic mb-6">Sector</h2><p id="cat-desc" class="text-gray-500 italic mb-20 max-w-xl"></p><div id="cat-grid" class="grid grid-cols-2 md:grid-cols-4 gap-12"></div><button onclick="showHome()" class="mt-20 btn-outline">Back to Home</button></div>
+
+    <!-- PRODUCT DETAIL (SINGLE IMAGE) -->
+    <div id="detail-view" class="hidden max-w-7xl mx-auto px-8 py-24">
+        <div class="grid md:grid-cols-2 gap-20">
+            <div id="detail-img-container">
+                <img id="det-img" src="" class="product-main-img">
+            </div>
+            <div>
+                <h2 id="det-name" class="brand-font text-6xl italic mb-6"></h2>
+                <p id="det-price" class="text-3xl text-gray-400 mb-12 italic"></p>
+                <div class="space-y-6 border-t border-white/5 pt-10 text-[11px] uppercase tracking-widest">
+                    <p class="text-gray-500">Manufacturer: <span id="det-man" class="text-white ml-2"></span></p>
+                    <p class="text-gray-500">Material: <span id="det-mat" class="text-white ml-2"></span></p>
+                    <p class="text-gray-500">Size: <span id="det-dim" class="text-white ml-2"></span></p>
+                    <p class="text-gray-500">Description: <span id="det-desc" class="text-white ml-2 lowercase italic"></span></p>
+                </div>
+                <button onclick="openCheckout()" class="btn-outline w-full mt-20">Proceed to Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050505] border-t border-white/10 py-32 px-8 mt-40">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-20">
+            <div><h4 class="brand-font text-4xl italic mb-6">Addiction</h4><p class="text-[12px] text-gray-500 italic">Premium boutique for intimacy.</p></div>
+            <div><span class="text-xs uppercase tracking-widest block mb-10">Quick Links</span>
+                <span onclick="alert('Shipment: Discreet packaging.')" class="nav-link">Shipment Policy</span>
+                <span onclick="alert('Terms: Safe usage only.')" class="nav-link">Privacy Terms</span>
+                <span onclick="alert('Return: Hygiene sealed.')" class="nav-link">Return Policy</span>
+            </div>
+            <div><span class="text-xs uppercase tracking-widest block mb-10">Contact Us</span>
+                <p class="text-xs mb-2">WhatsApp: +62 895 2022 5851</p>
+                <p class="text-xs italic text-gray-500">itxaddicted9@gmail.com</p>
+            </div>
+            <div><span class="text-xs uppercase tracking-widest block mb-10">Office</span><p class="text-[10px] text-gray-600 uppercase tracking-widest leading-loose">Addiction LTD.<br>Jakarta HQ, Indonesia</p></div>
+        </div>
+        <div class="text-center mt-32 pt-12 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.5em]">ADDICTION &copy; ALL RIGHTS RESERVED 2026</div>
+    </footer>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 p-6 overflow-y-auto">
+        <div class="bg-[#050505] border border-white/10 w-full max-w-2xl p-12 relative my-10">
+            <button onclick="closeCheckout()" class="absolute top-8 right-8 text-gray-400">✕</button>
+            <h3 class="brand-font text-4xl italic mb-10 text-center">Shipment Details</h3>
+            <form id="order-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="cust-name" placeholder="FULL NAME" class="input-field col-span-2" required>
+                <input type="text" id="cust-phone" placeholder="PHONE NUMBER" class="input-field col-span-2" required>
+                <input type="text" id="cust-country" placeholder="COUNTRY" class="input-field" required>
+                <input type="text" id="cust-province" placeholder="PROVINCE" class="input-field" required>
+                <input type="text" id="cust-city" placeholder="CITY" class="input-field" required>
+                <input type="text" id="cust-postal" placeholder="POSTAL CODE" class="input-field" required>
+                <input type="text" id="cust-addr1" placeholder="ADDRESS LINE 1" class="input-field col-span-2" required>
+                <input type="text" id="cust-addr2" placeholder="ADDRESS LINE 2" class="input-field col-span-2">
+                <button type="submit" class="btn-outline w-full mt-6 bg-white text-black font-bold col-span-2">Confirm Order to WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const phoneNum = "6289520225851";
+        let currentProduct = {};
+
+        const sectors = [
+            { name: "Dildos", desc: "Silicone & Glass Art", slug: "dildo" },
+            { name: "Vibrators", desc: "High-Tech Stimulation", slug: "vibrator" },
+            { name: "Pussy", desc: "Realistic Textures", slug: "pussy" },
+            { name: "Butt", desc: "Safety Weighted", slug: "butt" },
+            { name: "BDSM", desc: "Premium Constraints", slug: "bdsm" },
+            { name: "Sex Dolls", desc: "Life-size Realism", slug: "doll" }
+        ];
+
+        function init() {
+            const nav = document.getElementById('sector-nav');
+            sectors.forEach(s => {
+                nav.innerHTML += `<div onclick="openCategory('${s.name}', '${s.desc}', '${s.slug}')" class="nav-link">${s.name}</div>`;
+            });
+
+            const homeArr = document.getElementById('home-arrivals');
+            for(let i=1; i<=3; i++) {
+                homeArr.innerHTML += renderCard(`Arrival ${i}`, '7,200', 'New Release', 'Addiction', 'Premium', 'Medium', 'Wash', `arrival-${i}`);
+            }
+
+            const homeTrend = document.getElementById('home-trending');
+            homeTrend.innerHTML += renderCard(`Glass Pro`, '4,500', 'Glass work', 'Elite', 'Glass', 'Small', 'Clean', `trending-1`);
+            homeTrend.innerHTML += renderCard(`Soft Velvet`, '3,800', 'Silicone work', 'Addiction', 'Silicone', 'Medium', 'Clean', `trending-2`);
+        }
+
+        function renderCard(name, price, desc, man, mat, dim, care, imgSlug) {
+            return `<div class="product-card" onclick="openProductDetail('${name}', '${price}', '${desc}', '${man}', '${mat}', '${dim}', '${care}', '${imgSlug}')">
+                <div class="img-box mb-6"><img src="images/${imgSlug}.jpeg" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'"></div>
+                <h4 class="brand-font text-xl italic">${name}</h4>
+            </div>`;
+        }
+
+        function showHome() {
+            document.querySelectorAll('#home-view, #new-arrivals-view, #category-view, #detail-view, #hero-wrap').forEach(el => el.classList.add('hidden'));
+            document.getElementById('home-view').classList.remove('hidden');
+            document.getElementById('hero-wrap').classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function openNewArrivals() {
+            document.querySelectorAll('#home-view, #hero-wrap').forEach(el => el.classList.add('hidden'));
+            document.getElementById('new-arrivals-view').classList.remove('hidden');
+            const grid = document.getElementById('new-arrivals-grid');
+            grid.innerHTML = '';
+            for(let i=1; i<=8; i++) {
+                grid.innerHTML += renderCard(`New Arrival ${i}`, '7,000', 'Fresh release', 'Addiction', 'Premium', 'Medium', 'Care', `arrival-${i}`);
+            }
+            window.scrollTo(0,0);
+        }
+
+        function openCategory(name, desc, slug) {
+            document.querySelectorAll('#home-view, #hero-wrap, #new-arrivals-view').forEach(el => el.classList.add('hidden'));
+            document.getElementById('category-view').classList.remove('hidden');
+            document.getElementById('cat-title').innerText = name;
+            document.getElementById('cat-desc').innerText = desc;
+            const grid = document.getElementById('cat-grid');
+            grid.innerHTML = '';
+            for(let i=1; i<=8; i++) {
+                grid.innerHTML += renderCard(`${name} ${i}`, '5,500', 'Catalog item', 'Addiction', 'Mixed', 'Medium', 'Clean', `${slug}-${i}`);
+            }
+            window.scrollTo(0,0);
+        }
+
+        function openProductDetail(name, price, desc, man, mat, dim, care, imgSlug) {
+            currentProduct = { name, price, desc, man, mat, dim, care };
+            document.querySelectorAll('#home-view, #hero-wrap, #new-arrivals-view, #category-view').forEach(el => el.classList.add('hidden'));
+            document.getElementById('detail-view').classList.remove('hidden');
+            document.getElementById('det-name').innerText = name;
+            document.getElementById('det-price').innerText = "Rs. " + price;
+            document.getElementById('det-man').innerText = man;
+            document.getElementById('det-mat').innerText = mat;
+            document.getElementById('det-dim').innerText = dim;
+            document.getElementById('det-desc').innerText = desc;
+            
+            document.getElementById('det-img').src = `images/${imgSlug}.jpeg`;
+            window.scrollTo(0,0);
+        }
+
+        function openCheckout() { document.getElementById('checkout-modal').classList.remove('hidden'); }
+        function closeCheckout() { document.getElementById('checkout-modal').classList.add('hidden'); }
+
+        document.getElementById('order-form').onsubmit = function(e) {
+            e.preventDefault();
+            const text = `🛒 *NEW ORDER: ${currentProduct.name}*
+💰 *Price:* Rs. ${currentProduct.price}
+🏢 *Manufacturer:* ${currentProduct.man}
+📝 *Description:* ${currentProduct.desc}
+
+👤 *CUSTOMER INFO:*
+- Name: ${document.getElementById('cust-name').value}
+- Phone: ${document.getElementById('cust-phone').value}
+- Country: ${document.getElementById('cust-country').value}
+- Province: ${document.getElementById('cust-province').value}
+- City: ${document.getElementById('cust-city').value}
+- Postal: ${document.getElementById('cust-postal').value}
+- Address 1: ${document.getElementById('cust-addr1').value}
+- Address 2: ${document.getElementById('cust-addr2').value || 'N/A'}`;
+            
+            window.open(`https://wa.me/${phoneNum}?text=${encodeURIComponent(text)}`, '_blank');
+        };
+
+        init();
+    </script>
+</body>
+</html>
