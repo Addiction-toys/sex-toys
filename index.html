@@ -129,20 +129,75 @@
 
         // --- 2. CHANGE PRODUCT NAMES & PRICES HERE ---
         // Change the text inside the quotes to name your products.
-        const productNames = {
-            "arrival-1": { name: "Female teacher sex doll", price: "7,500" },
-            "arrival-2": { name: "Blonde hair perfect size doll", price: "7,800" },
-            "arrival-3": { name: "Hairy Pussy Sex Doll", price: "8,200" },
-            "trending-1": { name: "Elite Glass Pro", price: "4,900" },
-            "trending-2": { name: "Soft Touch Master", price: "3,500" },
-            "dildo-1": { name: "Crystal Curve", price: "5,200" },
-            "vibrator-1": { name: "Silent Whisper", price: "6,000" },
-            "pussy-1": { name: "Real Feel Stroker", price: "4,500" },
-            "butt-1": { name: "Jewel Plug", price: "3,200" },
-            "bdsm-1": { name: "Silk Restraints", price: "2,500" },
-            "doll-1": { name: "Luna Life-Size", price: "85,000" }
-            // To add more, follow this pattern: "slug-number": { name: "NAME", price: "PRICE" },
-        };
+            const productNames = {
+        // Arrivals
+        "arrival-1": { name: "Premium Arrival 1", price: "7,500" },
+        "arrival-2": { name: "Premium Arrival 2", price: "7,500" },
+        "arrival-3": { name: "Premium Arrival 3", price: "7,500" },
+        "arrival-4": { name: "Premium Arrival 4", price: "7,500" },
+        "arrival-5": { name: "Premium Arrival 5", price: "7,500" },
+        "arrival-6": { name: "Premium Arrival 6", price: "7,500" },
+        "arrival-7": { name: "Premium Arrival 7", price: "7,500" },
+        "arrival-8": { name: "Premium Arrival 8", price: "7,500" },
+        // Trending
+        "trending-1": { name: "Elite Glass Pro", price: "4,900" },
+        "trending-2": { name: "Soft Touch Master", price: "3,500" },
+        // Dildos
+        "dildo-1": { name: "Dildo One", price: "5,500" },
+        "dildo-2": { name: "Dildo Two", price: "5,500" },
+        "dildo-3": { name: "Dildo Three", price: "5,500" },
+        "dildo-4": { name: "Dildo Four", price: "5,500" },
+        "dildo-5": { name: "Dildo Five", price: "5,500" },
+        "dildo-6": { name: "Dildo Six", price: "5,500" },
+        "dildo-7": { name: "Dildo Seven", price: "5,500" },
+        "dildo-8": { name: "Dildo Eight", price: "5,500" },
+        // Vibrators
+        "vibrator-1": { name: "Vibrator One", price: "6,000" },
+        "vibrator-2": { name: "Vibrator Two", price: "6,000" },
+        "vibrator-3": { name: "Vibrator Three", price: "6,000" },
+        "vibrator-4": { name: "Vibrator Four", price: "6,000" },
+        "vibrator-5": { name: "Vibrator Five", price: "6,000" },
+        "vibrator-6": { name: "Vibrator Six", price: "6,000" },
+        "vibrator-7": { name: "Vibrator Seven", price: "6,000" },
+        "vibrator-8": { name: "Vibrator Eight", price: "6,000" },
+        // Pussy
+        "pussy-1": { name: "Stroker One", price: "4,500" },
+        "pussy-2": { name: "Stroker Two", price: "4,500" },
+        "pussy-3": { name: "Stroker Three", price: "4,500" },
+        "pussy-4": { name: "Stroker Four", price: "4,500" },
+        "pussy-5": { name: "Stroker Five", price: "4,500" },
+        "pussy-6": { name: "Stroker Six", price: "4,500" },
+        "pussy-7": { name: "Stroker Seven", price: "4,500" },
+        "pussy-8": { name: "Stroker Eight", price: "4,500" },
+        // Butt Plug
+        "butt-1": { name: "Plug One", price: "3,500" },
+        "butt-2": { name: "Plug Two", price: "3,500" },
+        "butt-3": { name: "Plug Three", price: "3,500" },
+        "butt-4": { name: "Plug Four", price: "3,500" },
+        "butt-5": { name: "Plug Five", price: "3,500" },
+        "butt-6": { name: "Plug Six", price: "3,500" },
+        "butt-7": { name: "Plug Seven", price: "3,500" },
+        "butt-8": { name: "Plug Eight", price: "3,500" },
+        // BDSM
+        "bdsm-1": { name: "BDSM One", price: "2,500" },
+        "bdsm-2": { name: "BDSM Two", price: "2,500" },
+        "bdsm-3": { name: "BDSM Three", price: "2,500" },
+        "bdsm-4": { name: "BDSM Four", price: "2,500" },
+        "bdsm-5": { name: "BDSM Five", price: "2,500" },
+        "bdsm-6": { name: "BDSM Six", price: "2,500" },
+        "bdsm-7": { name: "BDSM Seven", price: "2,500" },
+        "bdsm-8": { name: "BDSM Eight", price: "2,500" },
+        // Sex Dolls
+        "doll-1": { name: "Doll One", price: "80,000" },
+        "doll-2": { name: "Doll Two", price: "80,000" },
+        "doll-3": { name: "Doll Three", price: "80,000" },
+        "doll-4": { name: "Doll Four", price: "80,000" },
+        "doll-5": { name: "Doll Five", price: "80,000" },
+        "doll-6": { name: "Doll Six", price: "80,000" },
+        "doll-7": { name: "Doll Seven", price: "80,000" },
+        "doll-8": { name: "Doll Eight", price: "80,000" }
+    };
+
 
         function getProd(slug) {
             return productNames[slug] || { name: "Premium Item", price: "5,000" };
